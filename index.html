@@ -8,17 +8,17 @@
         <link rel="icon" type="image/png" href="me_head.png">
         <meta name="google-site-verification"
               content="Vx9aIzK0ZRZt3sBxqItUFoocxAL5FLkqX5xRZ4pkDdw" />
-        <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
               rel="stylesheet">
-        <!-- Font Awesome 6 (مجاني واحترافي) -->
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-        <!-- GSAP, Three.js, Typed.js -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+        <link rel="stylesheet"
+              type='text/css'
+              href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
         <style>
         * {
             margin: 0;
@@ -115,7 +115,7 @@
             box-shadow: 0 0 8px #a78bfa;
         }
 
-        /* Profile Frame - احترافي جداً */
+        /* Profile Frame */
         .profile-frame {
             width: 300px;
             height: 300px;
@@ -183,10 +183,6 @@
             margin-right: 6px;
             color: #38bdf8;
         }
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.6; }
-        }
 
         .tech-grid {
             display: grid;
@@ -207,26 +203,262 @@
         }
         .tech-item i { font-size: 1.8rem; display: block; margin-bottom: 8px; }
 
+        /* --- Global Clean Projects Styles System --- */
+        .projects-wrapper {
+            padding: 4rem 2rem;
+            background: #0b111e;
+            color: #fff;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .projects-heading {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 0.5rem 0;
+            color: #f8fafc;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        /* 3D Tilt Project Card Styles */
         .project-card {
-            background: rgba(8, 12, 20, 0.75);
-            backdrop-filter: blur(10px);
-            border-radius: 1.8rem;
-            padding: 1.8rem;
-            transition: all 0.3s;
+            background: #111827;
             border: 1px solid #1e293b;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .project-card:hover {
             border-color: #38bdf8;
-            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(56,189,248,0.15);
         }
-        .project-badge {
+
+        /* Browser Mockup Style for Images */
+        .browser-mockup {
+            width: 100%;
+            height: 210px;
+            background: #1e293b;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #2d3748;
+            transform: translateZ(20px); /* 3D pop effect */
+        }
+        .browser-bar {
+            height: 28px;
             background: #0f172a;
-            border-radius: 2rem;
-            padding: 0.2rem 0.8rem;
-            font-size: 0.7rem;
-            color: #38bdf8;
-            border: 1px solid #38bdf8;
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            gap: 6px;
         }
+        .browser-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+        .browser-dot:nth-child(2) { background: #eab308; }
+        .browser-dot:nth-child(3) { background: #22c55e; }
+        .browser-url {
+            background: #1e293b;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            color: #94a3b8;
+            padding: 2px 20px;
+            border-radius: 4px;
+            margin-left: 12px;
+            width: 50%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .browser-img {
+            width: 100%;
+            height: calc(100% - 28px);
+            object-fit: cover;
+            opacity: 0.85;
+            transition: opacity 0.3s ease, transform 0.5s ease;
+        }
+        .project-card:hover .browser-img {
+            opacity: 1;
+            transform: scale(1.03);
+        }
+
+        .card-badge-container {
+            position: absolute;
+            top: 40px;
+            right: 12px;
+            z-index: 5;
+        }
+        .status-badge {
+            background: rgba(11, 17, 30, 0.8);
+            color: #38bdf8;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .status-badge.purple-badge {
+            color: #c084fc;
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+        .status-badge.grey-badge {
+            color: #cbd5e1;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Card Content Inner Elements */
+        .card-body {
+            padding: 1.6rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            transform: translateZ(30px);
+        }
+        .card-title {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        .card-title-id {
+            font-size: 0.85rem;
+            color: #38bdf8;
+            font-weight: normal;
+            background: rgba(56, 189, 248, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 4px;
+        }
+        .card-subtitle {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin: 0.5rem 0 1rem 0;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+        
+        .badge-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 1.25rem;
+        }
+        .tag-badge {
+            background: #141e2c;
+            border: 1px solid #1e293b;
+            color: #cbd5e1;
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .card-description {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            margin: 0 0 1.25rem 0;
+        }
+
+        /* Custom In-card ERP Metrics Display */
+        .erp-mini-metrics {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #1e293b;
+        }
+        .erp-metric-box {
+            flex: 1;
+            text-align: center;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .erp-metric-num {
+            display: block;
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        .erp-metric-lbl {
+            font-size: 0.68rem;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            border-top: 1px solid #1e293b;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .card-actions {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .btn-card-demo {
+            padding: 0.5rem 1rem;
+            background: #1e293b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid #334155;
+            transition: all 0.2s;
+        }
+        .btn-card-demo:hover {
+            background: #38bdf8;
+            color: #0a0c12;
+            border-color: #38bdf8;
+            box-shadow: 0 0 10px rgba(56,189,248,0.4);
+        }
+        .btn-card-link {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .btn-card-link:hover {
+            color: #38bdf8;
+        }
+        .footer-metric-highlight {
+            color: #38bdf8;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .footer-metric-highlight.purple { color: #c084fc; }
 
         .stats-wrapper {
             display: flex;
@@ -302,7 +534,6 @@
     <body>
         <canvas id="bg-canvas"></canvas>
         <div class="container">
-            <!-- Hero Section -->
             <section style="margin-top: 2rem;">
                 <div class="hero-grid">
                     <div class="hero-content">
@@ -339,7 +570,7 @@
                                     flex-wrap: wrap">
                             <span style="background:#0f172a; padding:4px 12px; border-radius:40px;"><i class="fab fa-linux"></i> Arch Linux</span>
                             <span style="background:#0f172a; padding:4px 12px; border-radius:40px;"><i class="fas fa-code"></i> Zed / VS Code</span>
-                            <span style="background:#0f172a; padding:4px 12px; border-radius:40px;"><i class="fas fa-chart-line"></i> 13+ YRS EXP</span>
+                            <span style="background:#0f172a; padding:4px 12px; border-radius:40px;"><i class="fas fa-chart-line"></i> 3+ YRS EXP</span>
                         </div>
                     </div>
                     <div class="hero-image">
@@ -368,7 +599,6 @@
                     </div>
                 </div>
             </section>
-            <!-- About / Terminal Persona -->
             <section>
                 <h2 style="font-size: 2rem;">
                     <i class="fas fa-terminal"></i> ~/about_me
@@ -393,7 +623,6 @@
                     <p style="color:#a78bfa;">$ echo "Clean code, elegant systems, relentless refactoring"</p>
                 </div>
             </section>
-            <!-- Tech Stack -->
             <section>
                 <h2>
                     <i class="fas fa-cogs"></i> core.tech_stack
@@ -404,7 +633,8 @@
                         <i class="fab fa-python"></i> Python
                     </div>
                     <div class="tech-item">
-                        <i class="fas fa-leaf"></i> Django
+                        <i class="devicon-django-plain"></i>
+                        Django
                     </div>
                     <div class="tech-item">
                         <i class="fab fa-vuejs"></i> Vue.js
@@ -426,62 +656,428 @@
                     </div>
                 </div>
             </section>
-            <!-- Projects -->
-            <section id="projects">
-                <h2>
-                    <i class="fas fa-rocket"></i> production_showcase
-                </h2>
-                <div class="glow-line"></div>
+            <!-- Projects Section - Glassmorphism Redesign -->
+            <section id="projects" style="padding: 4rem 0;">
+                <!-- Section Header -->
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 2rem;
+                               font-weight: 700;
+                               letter-spacing: 1px;
+                               display: flex;
+                               align-items: center;
+                               gap: 12px;
+                               margin: 0 0 0.5rem 0;
+                               color: #f8fafc">
+                        <i class="fas fa-rocket" style="color: #38bdf8;"></i> production_showcase
+                    </h2>
+                    <div class="glow-line"
+                         style="height: 2px;
+                                width: 100px;
+                                background: linear-gradient(90deg, #38bdf8, transparent)"></div>
+                </div>
+                <!-- Projects Grid -->
                 <div style="display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-                            gap: 2rem">
-                    <div class="project-card">
-                        <div style="display: flex;
-                                    justify-content: space-between;
-                                    align-items: center">
-                            <h3>LearnCore</h3>
-                            <span class="project-badge"><i class="fas fa-circle" style="color:#38bdf8; font-size: 0.6rem;"></i> LIVE PRODUCTION</span>
+                            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+                            gap: 2rem;
+                            margin-top: 2rem">
+                    <!-- CARD 1: LearnCore (with real image) -->
+                    <div class="project-glass-card"
+                         style="background: rgba(15, 23, 42, 0.55);
+                                backdrop-filter: blur(14px);
+                                border-radius: 2rem;
+                                border: 1px solid rgba(56, 189, 248, 0.2);
+                                overflow: hidden;
+                                transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+                                box-shadow: 0 15px 35px -15px rgba(0,0,0,0.4);
+                                cursor: default">
+                        <!-- Image Container (full width) -->
+                        <div style="position: relative;
+                                    width: 100%;
+                                    height: 200px;
+                                    overflow: hidden;
+                                    background: #0f172a">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format"
+                                 alt="LearnCore Dashboard"
+                                 style="width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                        transition: transform 0.5s ease">
+                            <!-- Status Badge -->
+                            <div style="position: absolute; top: 16px; right: 16px; z-index: 3;">
+                                <span style="background: rgba(0, 0, 0, 0.7);
+                                             backdrop-filter: blur(8px);
+                                             color: #38bdf8;
+                                             padding: 6px 14px;
+                                             border-radius: 40px;
+                                             font-size: 0.7rem;
+                                             font-weight: 700;
+                                             display: flex;
+                                             align-items: center;
+                                             gap: 6px;
+                                             border: 1px solid rgba(56, 189, 248, 0.4)">
+                                    <i class="fas fa-circle" style="color:#38bdf8; font-size: 0.45rem;"></i> LIVE
+                                </span>
+                            </div>
                         </div>
-                        <div style="margin: 1rem 0; display: flex; flex-wrap: wrap; gap: 8px;">
-                            <span style="background:#141e2c; border-radius: 30px; padding:2px 12px;">AI Diagnostics</span>
-                            <span style="background:#141e2c; border-radius: 30px; padding:2px 12px;">Django Core</span>
-                            <span style="background:#141e2c; border-radius: 30px; padding:2px 12px;">Docker Swarm</span>
-                        </div>
-                        <p>
-                            AI-powered educational ecosystem. Serves 15k+ daily active users. Automated curriculum generation + realtime analytics.
-                        </p>
-                        <div style="margin-top: 1.5rem;">
-                            <a href="#" class="btn-outline" style="padding:0.5rem 1rem;">Case study →</a>
-                            <span style="float:right; color:#38bdf8;">⚡ 10k+ concurrent</span>
+                        <!-- Content Body with Logo inline -->
+                        <div style="padding: 1.6rem 1.6rem 1.8rem 1.6rem;">
+                            <!-- Header with Logo and Title inline -->
+                            <div style="display: flex;
+                                        align-items: center;
+                                        gap: 16px;
+                                        margin-bottom: 0.75rem;
+                                        flex-wrap: wrap">
+                                <img src="logo.webp"
+                                     alt="LearnCore Logo"
+                                     style="width: 55px;
+                                            height: auto;
+                                            border-radius: 14px;
+                                            background: #0f172a;
+                                            padding: 6px;
+                                            border: 1px solid rgba(56, 189, 248, 0.3)">
+                                <div>
+                                    <h3 style="font-size: 1.5rem;
+                                               font-weight: 700;
+                                               color: #f1f5f9;
+                                               margin: 0;
+                                               letter-spacing: -0.3px">
+                                        LearnCore <span style="font-size: 0.8rem;
+              color: #38bdf8;
+              background: rgba(56, 189, 248, 0.12);
+              padding: 2px 8px;
+              border-radius: 30px;
+              margin-left: 8px;
+              font-weight: 500">ERP</span>
+                                    </h3>
+                                    <p style="color: #94a3b8;
+                                              font-size: 0.8rem;
+                                              margin: 4px 0 0 0;
+                                              font-weight: 500">Next-Gen B2B Educational Ecosystem</p>
+                                </div>
+                            </div>
+                            <!-- Tech Badges -->
+                            <div style="display: flex;
+                                        flex-wrap: wrap;
+                                        gap: 8px;
+                                        margin-bottom: 1.3rem">
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">Django</span>
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">DRF</span>
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">Vue.js</span>
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">Docker Swarm</span>
+                            </div>
+                            <p style="color: #cbd5e6;
+                                      line-height: 1.55;
+                                      font-size: 0.88rem;
+                                      margin: 0 0 1.6rem 0;
+                                      opacity: 0.9">
+                                Enterprise-grade platform serving <strong style="color:#38bdf8;">15k+ daily users</strong> with AI-powered diagnostics, automated curriculum generation, and real-time analytics.
+                            </p>
+                            <!-- Actions Footer -->
+                            <div style="display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        gap: 12px;
+                                        flex-wrap: wrap;
+                                        border-top: 1px solid rgba(56, 189, 248, 0.15);
+                                        padding-top: 1.2rem">
+                                <div style="display: flex; gap: 12px;">
+                                    <a href="https://learncore.onrender.com"
+                                       target="_blank"
+                                       style="background: rgba(56, 189, 248, 0.08);
+                                              border: 1px solid #38bdf8;
+                                              color: #38bdf8;
+                                              padding: 0.45rem 1rem;
+                                              border-radius: 40px;
+                                              font-size: 0.75rem;
+                                              font-weight: 600;
+                                              text-decoration: none;
+                                              transition: all 0.2s;
+                                              display: inline-flex;
+                                              align-items: center;
+                                              gap: 6px">
+                                        <i class="fas fa-external-link-alt"></i>Visit
+                                    </a>
+                                    <!-- <a href="#" -->
+                                    <!--    style="background: rgba(100, 116, 139, 0.15); -->
+                                    <!--           border: 1px solid #334155; -->
+                                    <!--           color: #cbd5e1; -->
+                                    <!--           padding: 0.45rem 1rem; -->
+                                    <!--           border-radius: 40px; -->
+                                    <!--           font-size: 0.75rem; -->
+                                    <!--           font-weight: 600; -->
+                                    <!--           text-decoration: none; -->
+                                    <!--           transition: all 0.2s; -->
+                                    <!--           display: inline-flex; -->
+                                    <!--           align-items: center; -->
+                                    <!--           gap: 6px"> -->
+                                    <!--     <i class="fab fa-github"></i> Source -->
+                                    <!-- </a> -->
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <i class="fas fa-charging-station"
+                                       style="color:#38bdf8;
+                                              font-size:0.7rem"></i>
+                                    <span style="color:#38bdf8; font-weight:700; font-size:0.8rem;">10k+ concurrent</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="project-card">
-                        <h3>Archiva Gateway</h3>
-                        <div style="margin: 12px 0;">
-                            <span class="project-badge">🔒 PRIVATE CLOUD</span>
+                    <!-- CARD 2: Archiva Gateway (Placeholder - replace image URL) -->
+                    <div class="project-glass-card"
+                         style="background: rgba(15, 23, 42, 0.55);
+                                backdrop-filter: blur(14px);
+                                border-radius: 2rem;
+                                border: 1px solid rgba(56, 189, 248, 0.2);
+                                overflow: hidden;
+                                transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+                                box-shadow: 0 15px 35px -15px rgba(0,0,0,0.4);
+                                cursor: default">
+                        <div style="position: relative;
+                                    width: 100%;
+                                    height: 220px;
+                                    overflow: hidden;
+                                    background: #0f172a">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format"
+                                 alt="Archiva Infrastructure"
+                                 style="width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                        transition: transform 0.5s ease">
+                            <div style="position: absolute; top: 16px; right: 16px; z-index: 3;">
+                                <span style="background: rgba(0, 0, 0, 0.7);
+                                             backdrop-filter: blur(8px);
+                                             color: #a78bfa;
+                                             padding: 6px 14px;
+                                             border-radius: 40px;
+                                             font-size: 0.7rem;
+                                             font-weight: 700;
+                                             display: flex;
+                                             align-items: center;
+                                             gap: 6px;
+                                             border: 1px solid rgba(167, 139, 250, 0.4)">
+                                    <i class="fas fa-shield-alt"></i> Private Cloud
+                                </span>
+                            </div>
                         </div>
-                        <div style="margin: 1rem 0; display: flex; gap: 6px;">
-                            <span style="background:#141e2c; border-radius: 30px; padding:2px 12px;">DRF</span>
-                            <span style="background:#141e2c; border-radius: 30px; padding:2px 12px;">Redis</span>
-                            <span style="background:#141e2c; border-radius: 30px; padding:2px 12px;">PostgreSQL</span>
+                        <div style="padding: 1.6rem 1.6rem 1.8rem 1.6rem;">
+                            <h3 style="font-size: 1.5rem;
+                                       font-weight: 700;
+                                       color: #f1f5f9;
+                                       margin: 0 0 0.75rem 0">Archiva Gateway</h3>
+                            <p style="color: #94a3b8;
+                                      font-size: 0.85rem;
+                                      margin: 0 0 1rem 0;
+                                      font-weight: 500">High-Performance Infrastructure Router</p>
+                            <div style="display: flex;
+                                        flex-wrap: wrap;
+                                        gap: 8px;
+                                        margin-bottom: 1.3rem">
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">DRF</span>
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">Redis</span>
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">PostgreSQL</span>
+                            </div>
+                            <p style="color: #cbd5e6;
+                                      line-height: 1.55;
+                                      font-size: 0.88rem;
+                                      margin: 0 0 1.6rem 0">
+                                High-throughput API gateway handling <strong style="color:#a78bfa;">5M+ monthly requests</strong> with sub-30ms latency for military-grade telemetry.
+                            </p>
+                            <div style="display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        gap: 12px;
+                                        flex-wrap: wrap;
+                                        border-top: 1px solid rgba(56, 189, 248, 0.15);
+                                        padding-top: 1.2rem">
+                                <div style="display: flex; gap: 12px;">
+                                    <a href="#"
+                                       style="background: rgba(56, 189, 248, 0.08);
+                                              border: 1px solid #38bdf8;
+                                              color: #38bdf8;
+                                              padding: 0.45rem 1rem;
+                                              border-radius: 40px;
+                                              font-size: 0.75rem;
+                                              font-weight: 600;
+                                              text-decoration: none;
+                                              display: inline-flex;
+                                              align-items: center;
+                                              gap: 6px"><i class="fas fa-cloud"></i> Demo</a>
+                                    <a href="#"
+                                       style="background: rgba(100, 116, 139, 0.15);
+                                              border: 1px solid #334155;
+                                              color: #cbd5e1;
+                                              padding: 0.45rem 1rem;
+                                              border-radius: 40px;
+                                              font-size: 0.75rem;
+                                              font-weight: 600;
+                                              text-decoration: none;
+                                              display: inline-flex;
+                                              align-items: center;
+                                              gap: 6px"><i class="fab fa-github"></i> Source</a>
+                                </div>
+                                <span style="color:#38bdf8; font-weight:700; font-size:0.8rem;">⚡ &lt;30ms</span>
+                            </div>
                         </div>
-                        <p>High-throughput API gateway handling 5M+ monthly requests with sub-30ms latency.</p>
-                        <a href="#"
-                           class="btn-outline"
-                           style="margin-top: 1rem;
-                                  display: inline-block">Infra overview →</a>
                     </div>
-                    <div class="project-card">
-                        <h3>neoTerminal</h3>
-                        <div style="margin: 12px 0;">
-                            <span class="project-badge">⚡ DEVELOPER TOOL</span>
+                    <!-- CARD 3: neoTerminal (Placeholder - replace image URL) -->
+                    <div class="project-glass-card"
+                         style="background: rgba(15, 23, 42, 0.55);
+                                backdrop-filter: blur(14px);
+                                border-radius: 2rem;
+                                border: 1px solid rgba(56, 189, 248, 0.2);
+                                overflow: hidden;
+                                transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+                                box-shadow: 0 15px 35px -15px rgba(0,0,0,0.4);
+                                cursor: default">
+                        <div style="position: relative;
+                                    width: 100%;
+                                    height: 220px;
+                                    overflow: hidden;
+                                    background: #0f172a">
+                            <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format"
+                                 alt="neoTerminal Dashboard"
+                                 style="width: 100%;
+                                        height: 100%;
+                                        object-fit: cover;
+                                        transition: transform 0.5s ease">
+                            <div style="position: absolute; top: 16px; right: 16px; z-index: 3;">
+                                <span style="background: rgba(0, 0, 0, 0.7);
+                                             backdrop-filter: blur(8px);
+                                             color: #c084fc;
+                                             padding: 6px 14px;
+                                             border-radius: 40px;
+                                             font-size: 0.7rem;
+                                             font-weight: 700;
+                                             display: flex;
+                                             align-items: center;
+                                             gap: 6px;
+                                             border: 1px solid rgba(192, 132, 252, 0.4)">
+                                    <i class="fas fa-terminal"></i> Dev Tool
+                                </span>
+                            </div>
                         </div>
-                        <p>Real-time resource monitor for Arch Linux servers with terminal-like UI. WebSockets + Django + Vue.js.</p>
-                        <a href="#" class="btn-outline" style="margin-top: 1rem;">Live demo →</a>
+                        <div style="padding: 1.6rem 1.6rem 1.8rem 1.6rem;">
+                            <h3 style="font-size: 1.5rem;
+                                       font-weight: 700;
+                                       color: #f1f5f9;
+                                       margin: 0 0 0.75rem 0">neoTerminal</h3>
+                            <p style="color: #94a3b8;
+                                      font-size: 0.85rem;
+                                      margin: 0 0 1rem 0;
+                                      font-weight: 500">Server Metrics Command Center</p>
+                            <div style="display: flex;
+                                        flex-wrap: wrap;
+                                        gap: 8px;
+                                        margin-bottom: 1.3rem">
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">Vue.js</span>
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">WebSockets</span>
+                                <span style="background: rgba(30, 41, 59, 0.7);
+                                             border: 1px solid rgba(56, 189, 248, 0.3);
+                                             color: #cbd5e1;
+                                             border-radius: 30px;
+                                             padding: 4px 12px;
+                                             font-size: 0.7rem;
+                                             font-weight: 600">Django</span>
+                            </div>
+                            <p style="color: #cbd5e6;
+                                      line-height: 1.55;
+                                      font-size: 0.88rem;
+                                      margin: 0 0 1.6rem 0">
+                                Real-time Arch Linux server monitoring with tactical terminal UI, WebSocket streaming, and live resource graphing.
+                            </p>
+                            <div style="display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        gap: 12px;
+                                        flex-wrap: wrap;
+                                        border-top: 1px solid rgba(56, 189, 248, 0.15);
+                                        padding-top: 1.2rem">
+                                <div style="display: flex; gap: 12px;">
+                                    <a href="#"
+                                       style="background: rgba(56, 189, 248, 0.08);
+                                              border: 1px solid #38bdf8;
+                                              color: #38bdf8;
+                                              padding: 0.45rem 1rem;
+                                              border-radius: 40px;
+                                              font-size: 0.75rem;
+                                              font-weight: 600;
+                                              text-decoration: none;
+                                              display: inline-flex;
+                                              align-items: center;
+                                              gap: 6px"><i class="fas fa-chart-line"></i> Live</a>
+                                    <a href="#"
+                                       style="background: rgba(100, 116, 139, 0.15);
+                                              border: 1px solid #334155;
+                                              color: #cbd5e1;
+                                              padding: 0.45rem 1rem;
+                                              border-radius: 40px;
+                                              font-size: 0.75rem;
+                                              font-weight: 600;
+                                              text-decoration: none;
+                                              display: inline-flex;
+                                              align-items: center;
+                                              gap: 6px"><i class="fab fa-github"></i> Repo</a>
+                                </div>
+                                <span style="color:#c084fc; font-weight:700; font-size:0.8rem;">🔓 OSS</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
-            <!-- Stats -->
             <section>
                 <h2>
                     <i class="fas fa-chart-line"></i> engineering_metrics
@@ -522,7 +1118,6 @@
                                 border-radius: 1rem">
                 </div>
             </section>
-            <!-- Footer -->
             <footer id="connect">
                 <h3 style="font-size: 1.6rem;">⟨ connect_in_the_cloud ⟩</h3>
                 <div style="display: flex;
@@ -619,6 +1214,41 @@
         const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
         gsap.to(particlesMesh.rotation, { y: mouseX * 0.1, x: mouseY * 0.05, duration: 1.2, ease: 'power2.out' });
         gsap.to(purplePoints.rotation, { y: -mouseX * 0.08, x: mouseY * 0.04, duration: 1.2 });
+    });
+
+    /* --- الخارق المطور: 3D Card Tilt Tracking Logic Engine --- */
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; 
+            const y = e.clientY - rect.top; 
+            
+            const xc = rect.width / 2;
+            const yc = rect.height / 2;
+            
+            // حساب زوايا الـ 3D Rotate بناءً على تموضع الماوس
+            const angleX = (yc - y) / 15; 
+            const angleY = (x - xc) / 15;
+            
+            gsap.to(card, {
+                rotateX: angleX,
+                rotateY: angleY,
+                duration: 0.3,
+                ease: 'power1.out',
+                overwrite: 'auto'
+            });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            // إعادة البطاقة لنقطة الصفر عند خروج الماوس
+            gsap.to(card, {
+                rotateX: 0,
+                rotateY: 0,
+                duration: 0.5,
+                ease: 'power2.out',
+                overwrite: 'auto'
+            });
+        });
     });
         </script>
     </body>
