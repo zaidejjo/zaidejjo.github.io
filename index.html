@@ -1,1266 +1,993 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-        <title>Zaid Ajo | Senior Full-Stack Architect</title>
-        <meta property="og:title" content="Zaid Ajo | Senior Full-Stack Architect">
-        <link rel="icon" type="image/png" href="zaid_rounded.png" sizes="96x96">
-        <link rel="apple-touch-icon" href="zaid_rounded.png">
-        <meta property="og:site_name" content="Zaid Ajo">
-        <meta property="og:description"
-              content="Portfolio of Zaid Ajo, Senior Full-Stack Architect. Explore my latest projects and technical expertise.">
-        <meta property="og:type" content="website">
-        <meta property="og:url" content="zaidejjo.github.io">
-        <meta property="og:image" content="zaid_rounded.png">
-        <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Zaid Ajo",
-  "alternateName": ["Zaid Ajo Portfolio", "زيد عجو"],
-  "url": "https://zaidejjo.github.io/" 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Zaid Ajo | Senior Full-Stack Engineer</title>
+    <meta property="og:title" content="Zaid Ajo | Senior Full-Stack Engineer">
+    <meta property="og:description" content="Portfolio of Zaid Ajo — Senior Full-Stack Engineer. Django, React, Arch Linux.">
+    <meta property="og:url" content="https://zaidejjo.github.io/">
+    <meta property="og:image" content="zaid_rounded.png">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="zaid_rounded.png" sizes="96x96">
+    <link rel="apple-touch-icon" href="zaid_rounded.png">
+    <meta name="google-site-verification" content="Vx9aIzK0ZRZt3sBxqItUFoocxAL5FLkqX5xRZ4pkDdw">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<style>
+:root {
+    --bg-primary: #0b0f1a;
+    --bg-secondary: #111827;
+    --bg-card: #0d1525;
+    --bg-terminal: #070b14;
+    --border: #1e293b;
+    --border-glow: rgba(6, 182, 212, 0.25);
+    --text-primary: #e2e8f0;
+    --text-secondary: #8899b4;
+    --text-muted: #4b5a75;
+    --cyan: #06b6d4;
+    --green: #22c55e;
+    --cyan-glow: rgba(6, 182, 212, 0.12);
+    --green-glow: rgba(34, 197, 94, 0.08);
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --radius: 16px;
+    --radius-sm: 10px;
 }
-        </script>
-        <meta name="google-site-verification"
-              content="Vx9aIzK0ZRZt3sBxqItUFoocxAL5FLkqX5xRZ4pkDdw" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-              rel="stylesheet">
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-        <link rel="stylesheet"
-              type='text/css'
-              href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-        <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--cyan); color: var(--bg-primary); }
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--cyan); border-radius: 4px; }
+#bg-canvas {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none; opacity: 0.3;
+}
+.scanline {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1; pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg, transparent, transparent 2px,
+        rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+    );
+}
+main {
+    position: relative; z-index: 2;
+    max-width: 1200px; margin: 0 auto; padding: 0 24px;
+}
+section { padding: 100px 0; }
+.section-label {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--cyan);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 10px;
+}
+.section-label::before {
+    content: '';
+    display: inline-block;
+    width: 24px; height: 1px;
+    background: var(--cyan);
+}
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 40px;
+}
+.glow-text { color: var(--cyan); }
 
-        body {
-            background-color: #0a0c12;
-            font-family: 'Inter', sans-serif;
-            color: #eef5ff;
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
+/* ===== STATUS BAR ===== */
+.status-bar {
+    position: fixed; top: 0; left: 0; right: 0;
+    height: 36px;
+    background: rgba(7, 11, 20, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 16px;
+    z-index: 100;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+.status-bar .sep { margin: 0 12px; color: var(--border); }
+.status-bar .highlight { color: var(--green); }
+.status-bar .dir { color: var(--cyan); }
 
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f121b;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #38bdf8;
-            border-radius: 8px;
-        }
+/* ===== HERO ===== */
+#hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding-top: 80px;
+}
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 60px;
+    align-items: center;
+    width: 100%;
+}
+.terminal-window {
+    background: var(--bg-terminal);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.terminal-window:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 25px 50px -12px rgba(6, 182, 212, 0.15);
+}
+.terminal-titlebar {
+    background: #0f172a;
+    padding: 10px 16px;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.terminal-dots { display: flex; gap: 6px; }
+.terminal-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+}
+.terminal-dot:nth-child(1) { background: #ef4444; }
+.terminal-dot:nth-child(2) { background: #eab308; }
+.terminal-dot:nth-child(3) { background: #22c55e; }
+.terminal-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    flex: 1; text-align: center;
+}
+.hero-name {
+    font-size: 3.2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+.hero-name .accent { color: var(--cyan); }
+.hero-title {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+.typed-container {
+    height: 32px;
+    display: flex; align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+.typed-container .prompt { color: var(--green); }
+.typed-container .cursor { color: var(--cyan); }
+.hero-actions {
+    display: flex; gap: 12px; flex-wrap: wrap;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+}
+.btn-primary {
+    background: var(--cyan);
+    color: var(--bg-primary);
+    border-color: var(--cyan);
+}
+.btn-primary:hover {
+    box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+    transform: translateY(-2px);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--text-secondary);
+    border-color: var(--border);
+}
+.btn-outline:hover {
+    border-color: var(--cyan);
+    color: var(--cyan);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+}
+.profile-ring {
+    width: 280px; height: 280px;
+    margin: 0 auto;
+    position: relative;
+}
+.profile-ring::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(var(--cyan), var(--green), var(--cyan));
+    animation: spinRing 4s linear infinite;
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1px));
+}
+@keyframes spinRing {
+    to { transform: rotate(360deg); }
+}
+.profile-image {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: var(--bg-card);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    border: 3px solid var(--bg-primary);
+}
+.profile-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+}
 
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.45;
-        }
+/* ===== ABOUT ===== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+.about-block {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    transition: border-color 0.3s;
+}
+.about-block:hover { border-color: rgba(6, 182, 212, 0.3); }
+.about-block-header {
+    display: flex; align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--green);
+}
+.about-block-header .arrow { color: var(--text-muted); }
+.about-block p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; }
+.about-block strong { color: var(--text-primary); }
+.quote-block {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    border-left: 3px solid var(--cyan);
+}
+.quote-block blockquote {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    font-style: italic;
+}
+.quote-block cite {
+    display: block;
+    margin-top: 12px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: normal;
+}
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 2rem 4rem;
-            position: relative;
-            z-index: 2;
-        }
+/* ===== STACK ===== */
+.stack-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.stack-category {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    transition: border-color 0.3s, transform 0.25s;
+}
+.stack-category:hover {
+    border-color: rgba(6, 182, 212, 0.3);
+    transform: translateY(-3px);
+}
+.stack-category-header {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--green);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+}
+.stack-category-header .dollar { color: var(--text-muted); }
+.stack-items { display: flex; flex-direction: column; gap: 10px; }
+.stack-item {
+    display: flex; align-items: center;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    padding: 6px 0;
+}
+.stack-item i, .stack-item .devicon {
+    width: 18px;
+    color: var(--cyan);
+    font-size: 1rem;
+}
+.stack-item .sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+}
 
-        .glow-card {
-            background: rgba(12, 18, 28, 0.65);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            border-radius: 2rem;
-            transition: transform 0.25s ease, border-color 0.2s;
-            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.5);
-        }
+/* ===== PROJECT ===== */
+.project-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.project-card:hover {
+    border-color: var(--cyan);
+    box-shadow: 0 0 40px rgba(6, 182, 212, 0.06);
+}
+.project-visual {
+    position: relative;
+    min-height: 380px;
+    background: var(--bg-secondary);
+    overflow: hidden;
+}
+.project-visual img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    transition: opacity 0.5s, transform 0.5s;
+}
+.project-card:hover .project-visual img {
+    opacity: 0.85;
+    transform: scale(1.03);
+}
+.project-badge {
+    position: absolute; top: 16px; left: 16px;
+    background: rgba(6, 182, 212, 0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    color: var(--cyan);
+    padding: 4px 14px;
+    border-radius: 40px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+}
+.project-badge i { font-size: 0.45rem; }
+.project-info {
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+}
+.project-name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
+}
+.project-sub {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+.project-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 20px;
+}
+.project-tag {
+    background: rgba(6, 182, 212, 0.06);
+    border: 1px solid rgba(6, 182, 212, 0.15);
+    color: var(--text-secondary);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+}
+.project-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 24px;
+    padding: 16px;
+    background: rgba(0,0,0,0.2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+.metric { text-align: center; }
+.metric-value {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--cyan);
+}
+.metric-label {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.project-desc {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+    flex: 1;
+}
+.project-actions {
+    display: flex; gap: 12px; align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
 
-        .terminal {
-            background: #05080f;
-            border-radius: 1.2rem;
-            border-left: 4px solid #38bdf8;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            padding: 1.5rem;
-            box-shadow: 0 12px 30px -10px rgba(0,0,0,0.6);
-        }
+/* ===== METRICS ===== */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.metric-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.25s;
+}
+.metric-card:hover {
+    border-color: var(--cyan);
+    transform: translateY(-4px);
+}
+.metric-card-icon {
+    font-size: 1.4rem;
+    color: var(--cyan);
+    margin-bottom: 12px;
+}
+.metric-card-value {
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+.metric-card-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+.metric-card.highlight {
+    grid-column: 1 / -1;
+    border-color: rgba(6, 182, 212, 0.2);
+    background: linear-gradient(135deg, rgba(6, 182, 212, 0.04), transparent);
+    display: flex; align-items: center; gap: 24px;
+    text-align: left; padding: 28px 32px;
+}
+.metric-card.highlight .metric-card-icon { margin-bottom: 0; font-size: 2rem; }
+.metric-card.highlight .metric-card-content { flex: 1; }
+.metric-card.highlight .metric-card-value { font-size: 1.1rem; color: var(--green); }
+.metric-card.highlight .metric-card-label { font-size: 0.9rem; color: var(--text-secondary); }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #0b2b38, #07121c);
-            border: 1px solid #38bdf8;
-            color: #38bdf8;
-            padding: 0.8rem 1.8rem;
-            border-radius: 3rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .btn-primary:hover {
-            background: #38bdf8;
-            color: #0a0c12;
-            box-shadow: 0 0 12px #38bdf8;
-        }
+/* ===== FOOTER ===== */
+footer {
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--border);
+}
+.footer-prompt {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+.footer-prompt .green { color: var(--green); }
+.footer-prompt .cyan { color: var(--cyan); }
+.footer-prompt .blink {
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    transition: all 0.25s;
+}
+.footer-link:hover {
+    color: var(--cyan);
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
+    transform: translateY(-2px);
+}
+.footer-link i { font-size: 1.1rem; color: var(--cyan); }
+.footer-bottom {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.footer-bottom .heart { color: var(--cyan); }
+.footer-bottom .arch { color: var(--green); }
 
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #a78bfa;
-            color: #a78bfa;
-            padding: 0.8rem 1.8rem;
-            border-radius: 3rem;
-            font-weight: 500;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-        .btn-outline:hover {
-            background: #a78bfa20;
-            box-shadow: 0 0 8px #a78bfa;
-        }
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .profile-ring { width: 220px; height: 220px; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-visual { min-height: 260px; }
+    .stack-grid { grid-template-columns: repeat(2, 1fr); }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 2rem; }
+    .hero-name { font-size: 2.5rem; }
+}
+@media (max-width: 640px) {
+    section { padding: 60px 0; }
+    main { padding: 0 16px; }
+    .hero-name { font-size: 1.8rem; }
+    .hero-title { font-size: 1rem; }
+    .stack-grid { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+    .metric-card.highlight { flex-direction: column; text-align: center; }
+    .project-info { padding: 24px; }
+    .project-metrics { grid-template-columns: 1fr; }
+    .project-name { font-size: 1.4rem; }
+    .profile-ring { width: 180px; height: 180px; }
+    .status-bar { display: none; }
+}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+<div class="scanline"></div>
 
-        /* Profile Frame */
-        .profile-frame {
-            width: 300px;
-            height: 300px;
-            margin: 0 auto;
-            position: relative;
-            cursor: pointer;
-        }
-        .profile-outer-ring {
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #38bdf8, #a78bfa, #38bdf8);
-            background-size: 200% 200%;
-            animation: rotateRing 4s linear infinite;
-            z-index: 0;
-        }
-        @keyframes rotateRing {
-            0% { background-position: 0% 50%; transform: rotate(0deg); }
-            100% { background-position: 100% 50%; transform: rotate(360deg); }
-        }
-        .profile-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: #0a0c16;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            z-index: 2;
-            overflow: hidden;
-            border: 3px solid #0a0c16;
-        }
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background-image: url('zaidajo.png');
-            background-size: cover;
-            background-position: center;
-            border: 2px solid rgba(56, 189, 248, 0.5);
-            transition: transform 0.3s ease, border-color 0.3s;
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
-        }
-        .profile-frame:hover .profile-image {
-            transform: scale(1.02);
-            border-color: #38bdf8;
-            box-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
-        }
-        .profile-badge {
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(12px);
-            padding: 6px 18px;
-            border-radius: 60px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: #a78bfa;
-            border: 1px solid rgba(167, 139, 250, 0.5);
-            letter-spacing: 1px;
-        }
-        .profile-badge i {
-            margin-right: 6px;
-            color: #38bdf8;
-        }
+<header class="status-bar">
+    <span class="highlight">zaid</span>
+    <span class="sep">@</span>
+    <span class="cyan">archbox</span>
+    <span class="sep">:</span>
+    <span class="dir">~/portfolio</span>
+    <span class="sep">$</span>
+    <span id="status-msg">_</span>
+</header>
 
-        .tech-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-            gap: 1.2rem;
-        }
-        .tech-item {
-            background: rgba(16, 22, 36, 0.7);
-            backdrop-filter: blur(8px);
-            border-radius: 2rem;
-            padding: 0.9rem 0.5rem;
-            text-align: center;
-            font-weight: 600;
-            font-family: 'JetBrains Mono', monospace;
-            border: 1px solid #1e2a3e;
-            transition: all 0.2s;
-            cursor: default;
-        }
-        .tech-item i { font-size: 1.8rem; display: block; margin-bottom: 8px; }
-
-        /* --- Global Clean Projects Styles System --- */
-        .projects-wrapper {
-            padding: 4rem 2rem;
-            background: #0b111e;
-            color: #fff;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-        .projects-heading {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 0 0 0.5rem 0;
-            color: #f8fafc;
-        }
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        /* 3D Tilt Project Card Styles */
-        .project-card {
-            background: #111827;
-            border: 1px solid #1e293b;
-            border-radius: 20px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .project-card:hover {
-            border-color: #38bdf8;
-            box-shadow: 0 20px 40px rgba(56,189,248,0.15);
-        }
-
-        /* Browser Mockup Style for Images */
-        .browser-mockup {
-            width: 100%;
-            height: 210px;
-            background: #1e293b;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid #2d3748;
-            transform: translateZ(20px); /* 3D pop effect */
-        }
-        .browser-bar {
-            height: 28px;
-            background: #0f172a;
-            display: flex;
-            align-items: center;
-            padding: 0 14px;
-            gap: 6px;
-        }
-        .browser-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #ef4444;
-        }
-        .browser-dot:nth-child(2) { background: #eab308; }
-        .browser-dot:nth-child(3) { background: #22c55e; }
-        .browser-url {
-            background: #1e293b;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.65rem;
-            color: #94a3b8;
-            padding: 2px 20px;
-            border-radius: 4px;
-            margin-left: 12px;
-            width: 50%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        .browser-img {
-            width: 100%;
-            height: calc(100% - 28px);
-            object-fit: cover;
-            opacity: 0.85;
-            transition: opacity 0.3s ease, transform 0.5s ease;
-        }
-        .project-card:hover .browser-img {
-            opacity: 1;
-            transform: scale(1.03);
-        }
-
-        .card-badge-container {
-            position: absolute;
-            top: 40px;
-            right: 12px;
-            z-index: 5;
-        }
-        .status-badge {
-            background: rgba(11, 17, 30, 0.8);
-            color: #38bdf8;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(56, 189, 248, 0.3);
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .status-badge.purple-badge {
-            color: #c084fc;
-            border-color: rgba(168, 85, 247, 0.3);
-        }
-        .status-badge.grey-badge {
-            color: #cbd5e1;
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* Card Content Inner Elements */
-        .card-body {
-            padding: 1.6rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            transform: translateZ(30px);
-        }
-        .card-title {
-            margin: 0;
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: #fff;
-        }
-        .card-title-id {
-            font-size: 0.85rem;
-            color: #38bdf8;
-            font-weight: normal;
-            background: rgba(56, 189, 248, 0.1);
-            padding: 2px 6px;
-            border-radius: 4px;
-            margin-left: 4px;
-        }
-        .card-subtitle {
-            color: #94a3b8;
-            font-size: 0.85rem;
-            margin: 0.5rem 0 1rem 0;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-        
-        .badge-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 1.25rem;
-        }
-        .tag-badge {
-            background: #141e2c;
-            border: 1px solid #1e293b;
-            color: #cbd5e1;
-            border-radius: 6px;
-            padding: 4px 10px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            font-family: 'JetBrains Mono', monospace;
-        }
-
-        .card-description {
-            color: #94a3b8;
-            line-height: 1.6;
-            font-size: 0.9rem;
-            margin: 0 0 1.25rem 0;
-        }
-
-        /* Custom In-card ERP Metrics Display */
-        .erp-mini-metrics {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 1.5rem;
-            background: rgba(15, 23, 42, 0.5);
-            padding: 10px;
-            border-radius: 10px;
-            border: 1px solid #1e293b;
-        }
-        .erp-metric-box {
-            flex: 1;
-            text-align: center;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .erp-metric-num {
-            display: block;
-            color: #38bdf8;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-        .erp-metric-lbl {
-            font-size: 0.68rem;
-            color: #64748b;
-            text-transform: uppercase;
-        }
-
-        .card-footer {
-            margin-top: auto;
-            border-top: 1px solid #1e293b;
-            padding-top: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .card-actions {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-        }
-        .btn-card-demo {
-            padding: 0.5rem 1rem;
-            background: #1e293b;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border: 1px solid #334155;
-            transition: all 0.2s;
-        }
-        .btn-card-demo:hover {
-            background: #38bdf8;
-            color: #0a0c12;
-            border-color: #38bdf8;
-            box-shadow: 0 0 10px rgba(56,189,248,0.4);
-        }
-        .btn-card-link {
-            color: #64748b;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .btn-card-link:hover {
-            color: #38bdf8;
-        }
-        .footer-metric-highlight {
-            color: #38bdf8;
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-family: 'JetBrains Mono', monospace;
-        }
-        .footer-metric-highlight.purple { color: #c084fc; }
-
-        .stats-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: space-between;
-        }
-        .stat-card {
-            background: #0b101a;
-            border-radius: 1.5rem;
-            padding: 1rem 1.5rem;
-            flex: 1;
-            min-width: 180px;
-            text-align: center;
-            border-bottom: 2px solid #38bdf8;
-        }
-
-        .social-icon {
-            font-size: 1.8rem;
-            transition: all 0.2s;
-            display: inline-flex;
-            background: #111827;
-            padding: 14px;
-            border-radius: 50%;
-            color: #cbd5e1;
-            text-decoration: none;
-            width: 55px;
-            height: 55px;
-            align-items: center;
-            justify-content: center;
-        }
-        .social-icon:hover {
-            color: #38bdf8;
-            text-shadow: 0 0 8px #38bdf8;
-            transform: translateY(-3px);
-            background: #0f172a;
-            border: 1px solid #38bdf8;
-        }
-
-        @media (max-width: 780px) {
-            .container { padding: 1.5rem; }
-            .hero-grid { flex-direction: column; text-align: center; }
-            .profile-frame { width: 240px; height: 240px; }
-            .profile-image { width: 140px; height: 140px; }
-        }
-
-        .hero-grid {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-        .hero-content { flex: 1.2; }
-        .hero-image { flex: 0.8; text-align: center; }
-
-        .gradient-text {
-            background: linear-gradient(135deg, #38bdf8, #a78bfa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        section { margin: 6rem 0; }
-        .glow-line {
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #38bdf8, #a78bfa, transparent);
-            margin: 1rem 0 2rem;
-        }
-        footer { text-align: center; margin-top: 5rem; padding-top: 2rem; border-top: 1px solid #1e293b; }
-        </style>
-    </head>
-    <body>
-        <canvas id="bg-canvas"></canvas>
-        <div class="container">
-            <section style="margin-top: 2rem;">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <div class="terminal"
-                             style="background: rgba(3,7,18,0.7);
-                                    backdrop-filter: blur(10px)">
-                            <span style="color:#a78bfa;">$></span> <span style="color:#e2e8f0;">whoami</span>
-                            <div class="terminal-output" style="color:#94a3b8; margin-top:0.5rem;">
-                                ── Senior Backend Architect | Full-Stack (Vue.js) in motion ──
-                            </div>
+<main>
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <div class="hero-grid">
+            <div>
+                <div class="terminal-window" data-terminal>
+                    <div class="terminal-titlebar">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot"></span>
+                            <span class="terminal-dot"></span>
+                            <span class="terminal-dot"></span>
                         </div>
-                        <h1 style="font-size: 3.2rem; margin: 1.5rem 0 0.5rem;">
-                            Zaid Ajo <span style="font-size: 1.8rem;">⚡</span>
+                        <span class="terminal-title">zaid@arch:~/portfolio — bash — 80×24</span>
+                    </div>
+                    <div style="padding: 28px 24px;">
+                        <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.8;">
+                            <div><span style="color: var(--green);">┌──(</span><span style="color: var(--cyan);">zaid@arch</span><span style="color: var(--green);">)</span><span style="color: var(--text-muted);">-(</span><span style="color: var(--cyan);">~</span><span style="color: var(--text-muted);">)</span></div>
+                            <div><span style="color: var(--green);">└─</span><span style="color: var(--text-muted);">$ </span><span style="color: var(--text-primary);">cat /etc/passwd | grep zaid</span></div>
+                        </div>
+                        <h1 class="hero-name">
+                            Zaid <span class="accent">Ajo</span>
                         </h1>
-                        <div style="height: 70px;">
+                        <p class="hero-title">Senior Full-Stack Engineer <span style="color: var(--text-muted);">(Django &amp; React)</span></p>
+                        <div class="typed-container">
+                            <span class="prompt">$&gt;</span>
                             <span id="typed-strings">
-                                <span>Senior Django Architect</span>
-                                <span>Full-Stack Engineer (Vue.js)</span>
-                                <span>I Use Arch BTW</span>
-                                <span>System Design · 10k+ req/s</span>
+                                <span>echo "Hardcore Arch Linux user focused on high-performance architectures."</span>
+                                <span>echo "Backend architect · 10k+ req/s · System design obsessed."</span>
+                                <span>echo "Clean code, elegant systems, relentless refactoring."</span>
                             </span>
-                            <span id="typed-output"
-                                  style="font-size: 1.5rem;
-                                         font-weight: 500;
-                                         color: #a78bfa"></span>
+                            <span id="typed-output"></span>
                         </div>
-                        <div style="margin: 2rem 0; display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="#projects" class="btn-primary"><i class="fas fa-rocket" style="margin-right: 8px;"></i> Explore Production</a>
-                            <a href="#connect" class="btn-outline"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Connect</a>
-                        </div>
-                        <div style="display: flex;
-                                    gap: 12px;
-                                    font-family: monospace;
-                                    flex-wrap: wrap">
-                            <span style="background:#0f172a; padding:4px 12px; border-radius:40px;"><i class="fab fa-linux"></i> Arch Linux</span>
-                            <span style="background:#0f172a; padding:4px 12px; border-radius:40px;"><i class="fas fa-code"></i> Zed / VS Code</span>
-                            <span style="background:#0f172a; padding:4px 12px; border-radius:40px;"><i class="fas fa-chart-line"></i> 3+ YRS EXP</span>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <div class="profile-frame" style="width: 300px; height: 300px;">
-                            <div class="profile-inner"
-                                 style="background: transparent;
-                                        border: none;
-                                        display: flex;
-                                        flex-direction: column;
-                                        align-items: center;
-                                        justify-content: center;
-                                        gap: 15px">
-                                <div style="width: 240px;
-                                            height: 240px;
-                                            border-radius: 50%;
-                                            background-image: url('zaidajo.png');
-                                            background-size: cover;
-                                            background-position: center;
-                                            border: 3px solid #38bdf8;
-                                            box-shadow: 0 0 30px rgba(56, 189, 248, 0.4)"></div>
-                                <div class="profile-badge">
-                                    <i class="fab fa-archlinux"></i> #ArchBTW
-                                </div>
-                            </div>
+                        <div class="hero-actions">
+                            <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Production Work</a>
+                            <a href="#connect" class="btn btn-outline"><i class="fa-regular fa-paper-plane"></i> Connect</a>
+                            <a href="https://github.com/zaidejjo" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
-            </section>
-            <section>
-                <h2 style="font-size: 2rem;">
-                    <i class="fas fa-terminal"></i> ~/about_me
-                </h2>
-                <div class="glow-line"></div>
-                <div class="terminal" style="background: #060b14;">
-                    <p>
-                        <span style="color:#a78bfa;">>>></span><span style="color:#38bdf8;">SYSTEM_DESIGN_PHILOSOPHY</span>
-                    </p>
-                    <p class="terminal-output" style="color:#cbd5e6;">
-                        [ backend_obsession ] → Django + DRF + async task queues → microservices that scale.
-                    </p>
-                    <p class="terminal-output" style="color:#cbd5e6;">
-                        [ frontend_evolution ] → Mastering Vue 3 composition API, Pinia, Vite for realtime dashboards.
-                    </p>
-                    <p class="terminal-output" style="color:#cbd5e6;">
-                        [ dev_env ] → <span style="color:#38bdf8;">"Arch Linux · tiling wm · zsh · Zed — zero bloat"</span> — I Use Arch BTW.
-                    </p>
-                    <p class="terminal-output" style="color:#cbd5e6;">
-                        [ performance_mindset ] → 99th percentile latency &gt; 10k concurrent requests tested (Locust).
-                    </p>
-                    <p style="color:#a78bfa;">$ echo "Clean code, elegant systems, relentless refactoring"</p>
-                </div>
-            </section>
-            <section>
-                <h2>
-                    <i class="fas fa-cogs"></i> core.tech_stack
-                </h2>
-                <div class="glow-line"></div>
-                <div class="tech-grid" id="tech-grid">
-                    <div class="tech-item">
-                        <i class="fab fa-python"></i> Python
-                    </div>
-                    <div class="tech-item">
-                        <i class="devicon-django-plain"></i>
-                        Django
-                    </div>
-                    <div class="tech-item">
-                        <i class="fab fa-vuejs"></i> Vue.js
-                    </div>
-                    <div class="tech-item">
-                        <i class="fab fa-js"></i> JavaScript
-                    </div>
-                    <div class="tech-item">
-                        <i class="fab fa-html5"></i> HTML/CSS
-                    </div>
-                    <div class="tech-item">
-                        <i class="fab fa-docker"></i> Docker
-                    </div>
-                    <div class="tech-item">
-                        <i class="fas fa-terminal"></i> Zed Editor
-                    </div>
-                    <div class="tech-item">
-                        <i class="fab fa-linux"></i> Arch Linux
+            </div>
+            <div>
+                <div class="profile-ring">
+                    <div class="profile-image">
+                        <img src="zaidajo.png" alt="Zaid Ajo">
                     </div>
                 </div>
-            </section>
-            <!-- Projects Section - Glassmorphism Redesign -->
-            <section id="projects" style="padding: 4rem 0;">
-                <!-- Section Header -->
-                <div style="margin-bottom: 3rem;">
-                    <h2 style="font-size: 2rem;
-                               font-weight: 700;
-                               letter-spacing: 1px;
-                               display: flex;
-                               align-items: center;
-                               gap: 12px;
-                               margin: 0 0 0.5rem 0;
-                               color: #f8fafc">
-                        <i class="fas fa-rocket" style="color: #38bdf8;"></i> production_showcase
-                    </h2>
-                    <div class="glow-line"
-                         style="height: 2px;
-                                width: 100px;
-                                background: linear-gradient(90deg, #38bdf8, transparent)"></div>
-                </div>
-                <!-- Projects Grid -->
-                <div style="display: grid;
-                            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-                            gap: 2rem;
-                            margin-top: 2rem">
-                    <!-- CARD 1: Madar Core (with real image) -->
-                    <div class="project-glass-card"
-                         style="background: rgba(15, 23, 42, 0.55);
-                                backdrop-filter: blur(14px);
-                                border-radius: 2rem;
-                                border: 1px solid rgba(56, 189, 248, 0.2);
-                                overflow: hidden;
-                                transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-                                box-shadow: 0 15px 35px -15px rgba(0,0,0,0.4);
-                                cursor: default">
-                        <!-- Image Container (full width) -->
-                        <div style="position: relative;
-                                    width: 100%;
-                                    height: 200px;
-                                    overflow: hidden;
-                                    background: #0f172a">
-                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format"
-                                 alt="Madar Core Dashboard"
-                                 style="width: 100%;
-                                        height: 100%;
-                                        object-fit: cover;
-                                        transition: transform 0.5s ease">
-                            <!-- Status Badge -->
-                            <div style="position: absolute; top: 16px; right: 16px; z-index: 3;">
-                                <span style="background: rgba(0, 0, 0, 0.7);
-                                             backdrop-filter: blur(8px);
-                                             color: #38bdf8;
-                                             padding: 6px 14px;
-                                             border-radius: 40px;
-                                             font-size: 0.7rem;
-                                             font-weight: 700;
-                                             display: flex;
-                                             align-items: center;
-                                             gap: 6px;
-                                             border: 1px solid rgba(56, 189, 248, 0.4)">
-                                    <i class="fas fa-circle" style="color:#38bdf8; font-size: 0.45rem;"></i> LIVE
-                                </span>
-                            </div>
-                        </div>
-                        <!-- Content Body with Logo inline -->
-                        <div style="padding: 1.6rem 1.6rem 1.8rem 1.6rem;">
-                            <!-- Header with Logo and Title inline -->
-                            <div style="display: flex;
-                                        align-items: center;
-                                        gap: 16px;
-                                        margin-bottom: 0.75rem;
-                                        flex-wrap: wrap">
-                                <img src="logo.webp"
-                                     alt="Madar Core Logo"
-                                     style="width: 55px;
-                                            height: auto;
-                                            border-radius: 14px;
-                                            background: #0f172a;
-                                            padding: 6px;
-                                            border: 1px solid rgba(56, 189, 248, 0.3)">
-                                <div>
-                                    <h3 style="font-size: 1.5rem;
-                                               font-weight: 700;
-                                               color: #f1f5f9;
-                                               margin: 0;
-                                               letter-spacing: -0.3px">
-                                        Madar Core <span style="font-size: 0.8rem;
-              color: #38bdf8;
-              background: rgba(56, 189, 248, 0.12);
-              padding: 2px 8px;
-              border-radius: 30px;
-              margin-left: 8px;
-              font-weight: 500">ERP</span>
-                                    </h3>
-                                    <p style="color: #94a3b8;
-                                              font-size: 0.8rem;
-                                              margin: 4px 0 0 0;
-                                              font-weight: 500">Next-Gen B2B Educational Ecosystem</p>
-                                </div>
-                            </div>
-                            <!-- Tech Badges -->
-                            <div style="display: flex;
-                                        flex-wrap: wrap;
-                                        gap: 8px;
-                                        margin-bottom: 1.3rem">
-                                <span style="background: rgba(30, 41, 59, 0.7);
-                                             border: 1px solid rgba(56, 189, 248, 0.3);
-                                             color: #cbd5e1;
-                                             border-radius: 30px;
-                                             padding: 4px 12px;
-                                             font-size: 0.7rem;
-                                             font-weight: 600">Django</span>
-                                <span style="background: rgba(30, 41, 59, 0.7);
-                                             border: 1px solid rgba(56, 189, 248, 0.3);
-                                             color: #cbd5e1;
-                                             border-radius: 30px;
-                                             padding: 4px 12px;
-                                             font-size: 0.7rem;
-                                             font-weight: 600">DRF</span>
-                                <span style="background: rgba(30, 41, 59, 0.7);
-                                             border: 1px solid rgba(56, 189, 248, 0.3);
-                                             color: #cbd5e1;
-                                             border-radius: 30px;
-                                             padding: 4px 12px;
-                                             font-size: 0.7rem;
-                                             font-weight: 600">Vue.js</span>
-                                <span style="background: rgba(30, 41, 59, 0.7);
-                                             border: 1px solid rgba(56, 189, 248, 0.3);
-                                             color: #cbd5e1;
-                                             border-radius: 30px;
-                                             padding: 4px 12px;
-                                             font-size: 0.7rem;
-                                             font-weight: 600">Docker Swarm</span>
-                            </div>
-                            <p style="color: #cbd5e6;
-                                      line-height: 1.55;
-                                      font-size: 0.88rem;
-                                      margin: 0 0 1.6rem 0;
-                                      opacity: 0.9">
-                                Enterprise-grade platform serving <strong style="color:#38bdf8;">15k+ daily users</strong> with AI-powered diagnostics, automated curriculum generation, and real-time analytics.
-                            </p>
-                            <!-- Actions Footer -->
-                            <div style="display: flex;
-                                        justify-content: space-between;
-                                        align-items: center;
-                                        gap: 12px;
-                                        flex-wrap: wrap;
-                                        border-top: 1px solid rgba(56, 189, 248, 0.15);
-                                        padding-top: 1.2rem">
-                                <div style="display: flex; gap: 12px;">
-                                    <a href="https://madarcore.onrender.com"
-                                       target="_blank"
-                                       style="background: rgba(56, 189, 248, 0.08);
-                                              border: 1px solid #38bdf8;
-                                              color: #38bdf8;
-                                              padding: 0.45rem 1rem;
-                                              border-radius: 40px;
-                                              font-size: 0.75rem;
-                                              font-weight: 600;
-                                              text-decoration: none;
-                                              transition: all 0.2s;
-                                              display: inline-flex;
-                                              align-items: center;
-                                              gap: 6px">
-                                        <i class="fas fa-external-link-alt"></i>Visit
-                                    </a>
-                                    <!-- <a href="#" -->
-                                    <!--    style="background: rgba(100, 116, 139, 0.15); -->
-                                    <!--           border: 1px solid #334155; -->
-                                    <!--           color: #cbd5e1; -->
-                                    <!--           padding: 0.45rem 1rem; -->
-                                    <!--           border-radius: 40px; -->
-                                    <!--           font-size: 0.75rem; -->
-                                    <!--           font-weight: 600; -->
-                                    <!--           text-decoration: none; -->
-                                    <!--           transition: all 0.2s; -->
-                                    <!--           display: inline-flex; -->
-                                    <!--           align-items: center; -->
-                                    <!--           gap: 6px"> -->
-                                    <!--     <i class="fab fa-github"></i> Source -->
-                                    <!-- </a> -->
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 6px;">
-                                    <i class="fas fa-charging-station"
-                                       style="color:#38bdf8;
-                                              font-size:0.7rem"></i>
-                                    <span style="color:#38bdf8; font-weight:700; font-size:0.8rem;">10k+ concurrent</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- CARD 2: Archiva Gateway (Placeholder - replace image URL) -->
-                    <div class="project-glass-card"
-                         style="background: rgba(15, 23, 42, 0.55);
-                                backdrop-filter: blur(14px);
-                                border-radius: 2rem;
-                                border: 1px solid rgba(56, 189, 248, 0.2);
-                                overflow: hidden;
-                                transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-                                box-shadow: 0 15px 35px -15px rgba(0,0,0,0.4);
-                                cursor: default">
-                        <div style="position: relative;
-                                    width: 100%;
-                                    height: 220px;
-                                    overflow: hidden;
-                                    background: #0f172a">
-                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format"
-                                 alt="Archiva Infrastructure"
-                                 style="width: 100%;
-                                        height: 100%;
-                                        object-fit: cover;
-                                        transition: transform 0.5s ease">
-                            <div style="position: absolute; top: 16px; right: 16px; z-index: 3;">
-                                <span style="background: rgba(0, 0, 0, 0.7);
-                                             backdrop-filter: blur(8px);
-                                             color: #a78bfa;
-                                             padding: 6px 14px;
-                                             border-radius: 40px;
-                                             font-size: 0.7rem;
-                                             font-weight: 700;
-                                             display: flex;
-                                             align-items: center;
-                                             gap: 6px;
-                                             border: 1px solid rgba(167, 139, 250, 0.4)">
-                                    <i class="fas fa-shield-alt"></i> Private Cloud
-                                </span>
-                            </div>
-                        </div>
-                        <div style="padding: 1.6rem 1.6rem 1.8rem 1.6rem;">
-                            <h3 style="font-size: 1.5rem;
-                                       font-weight: 700;
-                                       color: #f1f5f9;
-                                       margin: 0 0 0.75rem 0">Archiva Gateway</h3>
-                            <p style="color: #94a3b8;
-                                      font-size: 0.85rem;
-                                      margin: 0 0 1rem 0;
-                                      font-weight: 500">High-Performance Infrastructure Router</p>
-                            <div style="display: flex;
-                                        flex-wrap: wrap;
-                                        gap: 8px;
-                                        margin-bottom: 1.3rem">
-                                <span style="background: rgba(30, 41, 59, 0.7);
-                                             border: 1px solid rgba(56, 189, 248, 0.3);
-                                             color: #cbd5e1;
-                                             border-radius: 30px;
-                                             padding: 4px 12px;
-                                             font-size: 0.7rem;
-                                             font-weight: 600">DRF</span>
-                                <span style="background: rgba(30, 41, 59, 0.7);
-                                             border: 1px solid rgba(56, 189, 248, 0.3);
-                                             color: #cbd5e1;
-                                             border-radius: 30px;
-                                             padding: 4px 12px;
-                                             font-size: 0.7rem;
-                                             font-weight: 600">Redis</span>
-                                <span style="background: rgba(30, 41, 59, 0.7);
-                                             border: 1px solid rgba(56, 189, 248, 0.3);
-                                             color: #cbd5e1;
-                                             border-radius: 30px;
-                                             padding: 4px 12px;
-                                             font-size: 0.7rem;
-                                             font-weight: 600">PostgreSQL</span>
-                            </div>
-                            <p style="color: #cbd5e6;
-                                      line-height: 1.55;
-                                      font-size: 0.88rem;
-                                      margin: 0 0 1.6rem 0">
-                                High-throughput API gateway handling <strong style="color:#a78bfa;">5M+ monthly requests</strong> with sub-30ms latency for military-grade telemetry.
-                            </p>
-                            <div style="display: flex;
-                                        justify-content: space-between;
-                                        align-items: center;
-                                        gap: 12px;
-                                        flex-wrap: wrap;
-                                        border-top: 1px solid rgba(56, 189, 248, 0.15);
-                                        padding-top: 1.2rem">
-                                <div style="display: flex; gap: 12px;">
-                                    <a href="#"
-                                       style="background: rgba(56, 189, 248, 0.08);
-                                              border: 1px solid #38bdf8;
-                                              color: #38bdf8;
-                                              padding: 0.45rem 1rem;
-                                              border-radius: 40px;
-                                              font-size: 0.75rem;
-                                              font-weight: 600;
-                                              text-decoration: none;
-                                              display: inline-flex;
-                                              align-items: center;
-                                              gap: 6px"><i class="fas fa-cloud"></i> Demo</a>
-                                    <a href="#"
-                                       style="background: rgba(100, 116, 139, 0.15);
-                                              border: 1px solid #334155;
-                                              color: #cbd5e1;
-                                              padding: 0.45rem 1rem;
-                                              border-radius: 40px;
-                                              font-size: 0.75rem;
-                                              font-weight: 600;
-                                              text-decoration: none;
-                                              display: inline-flex;
-                                              align-items: center;
-                                              gap: 6px"><i class="fab fa-github"></i> Source</a>
-                                </div>
-                                <span style="color:#38bdf8; font-weight:700; font-size:0.8rem;">⚡ &lt;30ms</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- CARD 3: ajo-cli (Placeholder - replace image URL) -->
-                    <div class="project-glass-card"
-                         style="background: rgba(15, 23, 42, 0.55);
-                                backdrop-filter: blur(14px);
-                                border-radius: 2rem;
-                                border: 1px solid rgba(56, 189, 248, 0.2);
-                                overflow: hidden;
-                                transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-                                box-shadow: 0 15px 35px -15px rgba(0,0,0,0.4);
-                                cursor: default">
-                        <div style="position: relative;
-                                    width: 100%;
-                                    height: 220px;
-                                    overflow: hidden;
-                                    background: #0f172a">
-                            <img src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format"
-                                 alt="ajo-cli Dashboard"
-                                 style="width: 100%;
-                                        height: 100%;
-                                        object-fit: cover;
-                                        transition: transform 0.5s ease">
-                            <div style="position: absolute; top: 16px; right: 16px; z-index: 3;">
-                                <span style="background: rgba(0, 0, 0, 0.7);
-                                             backdrop-filter: blur(8px);
-                                             color: #c084fc;
-                                             padding: 6px 14px;
-                                             border-radius: 40px;
-                                             font-size: 0.7rem;
-                                             font-weight: 700;
-                                             display: flex;
-                                             align-items: center;
-                                             gap: 6px;
-                                             border: 1px solid rgba(192, 132, 252, 0.4)">
-                                    <i class="fas fa-terminal"></i> Dev Tool
-                                </span>
-                            </div>
-                        </div>
-                        <div style="padding: 1.6rem 1.6rem 1.8rem 1.6rem;">
-                            <h3 style="font-size: 1.5rem;
-                                       font-weight: 700;
-                                       color: #f1f5f9;
-                                       margin: 0 0 0.75rem 0">ajo-cli</h3>
-                            <p style="color: #94a3b8;
-                                      font-size: 0.85rem;
-                                      margin: 0 0 1rem 0;
-                                      font-weight: 500">Django Scaffolder using python</p>
-                            <div style="display: flex;
-                                        flex-wrap: wrap;
-                                        gap: 8px;
-                                        margin-bottom: 1.3rem">
-                                <span style="background: rgba(30, 41, 59, 0.7);
-                                             border: 1px solid rgba(56, 189, 248, 0.3);
-                                             color: #cbd5e1;
-                                             border-radius: 30px;
-                                             padding: 4px 12px;
-                                             font-size: 0.7rem;
-                                             font-weight: 600">Python</span>
-                                <span style="background: rgba(30, 41, 59, 0.7);
-                                             border: 1px solid rgba(56, 189, 248, 0.3);
-                                             color: #cbd5e1;
-                                             border-radius: 30px;
-                                             padding: 4px 12px;
-                                             font-size: 0.7rem;
-                                             font-weight: 600">Django</span>
-                            </div>
-                            <p style="color: #cbd5e6;
-                                      line-height: 1.55;
-                                      font-size: 0.88rem;
-                                      margin: 0 0 1.6rem 0">
-                                ajo-cli is a command-line tool that eliminates repetitive Django setup. It bootstraps standardized, production-ready environments in seconds, bridging the gap between starting fast and starting right.
-                            </p>
-                            <div style="display: flex;
-                                        justify-content: space-between;
-                                        align-items: center;
-                                        gap: 12px;
-                                        flex-wrap: wrap;
-                                        border-top: 1px solid rgba(56, 189, 248, 0.15);
-                                        padding-top: 1.2rem">
-                                <div style="display: flex; gap: 12px;">
-                                    <!-- <a href="#" -->
-                                    <!--    style="background: rgba(56, 189, 248, 0.08); -->
-                                    <!--           border: 1px solid #38bdf8; -->
-                                    <!--           color: #38bdf8; -->
-                                    <!--           padding: 0.45rem 1rem; -->
-                                    <!--           border-radius: 40px; -->
-                                    <!--           font-size: 0.75rem; -->
-                                    <!--           font-weight: 600; -->
-                                    <!--           text-decoration: none; -->
-                                    <!--           display: inline-flex; -->
-                                    <!--           align-items: center; -->
-                                    <!--           gap: 6px"><i class="fas fa-chart-line"></i> Live</a> -->
-                                    <a href="https://github.com/zaidejjo/ajo-cli"
-                                       target="_blank"
-                                       style="background: rgba(100, 116, 139, 0.15);
-                                              border: 1px solid #334155;
-                                              color: #cbd5e1;
-                                              padding: 0.45rem 1rem;
-                                              border-radius: 40px;
-                                              font-size: 0.75rem;
-                                              font-weight: 600;
-                                              text-decoration: none;
-                                              display: inline-flex;
-                                              align-items: center;
-                                              gap: 6px"><i class="fab fa-github"></i> Repo</a>
-                                </div>
-                                <span style="color:#c084fc; font-weight:700; font-size:0.8rem;">🔓 OSS</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h2>
-                    <i class="fas fa-chart-line"></i> engineering_metrics
-                </h2>
-                <div class="glow-line"></div>
-                <div class="stats-wrapper">
-                    <div class="stat-card">
-                        <i class="fas fa-tachometer-alt"></i> <strong style="color:#38bdf8;">10k+</strong>
-                        <br>
-                        Concurrent Users
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-check-circle"></i> <strong style="color:#a78bfa;">99.98%</strong>
-                        <br>
-                        API Uptime
-                    </div>
-                    <div class="stat-card">
-                        <i class="fas fa-chart-simple"></i> <strong style="color:#38bdf8;">&lt;45ms</strong>
-                        <br>
-                        p99 Latency
-                    </div>
-                    <div class="stat-card">
-                        <i class="fab fa-linux"></i> <strong style="color:#a78bfa;">Arch BTW</strong>
-                        <br>
-                        Since 2016
-                    </div>
-                </div>
-                <div style="margin-top: 2rem;
-                            display: flex;
-                            justify-content: center;
-                            gap: 1rem;
-                            flex-wrap: wrap">
-                    <img src="https://github-readme-stats.vercel.app/api?username=zaidejjo&show_icons=true&title_color=38bdf8&icon_color=a78bfa&text_color=cbd5e6&bg_color=0a0c16&hide_border=true"
-                         style="max-width: 100%;
-                                border-radius: 1rem">
-                    <img src="https://github-readme-streak-stats.herokuapp.com/?user=zaidejjo&theme=dark&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8&background=0a0c16&hide_border=true"
-                         style="max-width: 100%;
-                                border-radius: 1rem">
-                </div>
-            </section>
-            <footer id="connect">
-                <h3 style="font-size: 1.6rem;">⟨ connect_in_the_cloud ⟩</h3>
-                <div style="display: flex;
-                            justify-content: center;
-                            gap: 1.8rem;
-                            margin: 2rem 0 1rem;
-                            flex-wrap: wrap">
-                    <a href="mailto:zaidejjodev@gmail.com"
-                       target="_blank"
-                       class="social-icon"><i class="fa-solid fa-envelope"></i></a>
-                    <a href="https://github.com/zaidejjo"
-                       target="_blank"
-                       class="social-icon"><i class="fa-brands fa-github"></i></a>
-                    <a href="https://linkedin.com/in/zaidejjo"
-                       class="social-icon"
-                       target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://x.com/zaid_ejjo" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
-                </div>
-                <p style="color: #6c7a91;">© 2026 Zaid Ajo — Senior Backend Architect / Full-Stack · Built with ⚡ on Arch Linux</p>
-                <div style="margin-top: 1rem;">
-                    <img src="https://komarev.com/ghpvc/?username=zaidejjo&style=flat-square&color=38bdf8">
-                </div>
-            </footer>
+            </div>
         </div>
-        <script>
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 1600;
-    const posArray = new Float32Array(particlesCount * 3);
-    for(let i = 0; i < particlesCount * 3; i += 3) {
-        posArray[i] = (Math.random() - 0.5) * 200;
-        posArray[i+1] = (Math.random() - 0.5) * 100;
-        posArray[i+2] = (Math.random() - 0.5) * 80 - 40;
-    }
-    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-    const particlesMaterial = new THREE.PointsMaterial({ color: 0x38bdf8, size: 0.2, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending });
-    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-    scene.add(particlesMesh);
-    
-    const purpleGeo = new THREE.BufferGeometry();
-    const purplePos = new Float32Array(800 * 3);
-    for(let i = 0; i < 800 * 3; i+=3){
-        purplePos[i] = (Math.random() - 0.5) * 180;
-        purplePos[i+1] = (Math.random() - 0.5) * 100;
-        purplePos[i+2] = (Math.random() - 0.5) * 70;
-    }
-    purpleGeo.setAttribute('position', new THREE.BufferAttribute(purplePos, 3));
-    const purplePoints = new THREE.Points(purpleGeo, new THREE.PointsMaterial({ color: 0xa78bfa, size: 0.15, transparent: true, blending: THREE.AdditiveBlending }));
-    scene.add(purplePoints);
-    
-    camera.position.z = 35;
-    
-    function animateParticles() {
-        requestAnimationFrame(animateParticles);
-        particlesMesh.rotation.y += 0.0006;
-        particlesMesh.rotation.x += 0.0003;
-        purplePoints.rotation.y -= 0.0004;
-        purplePoints.rotation.x += 0.0002;
-        renderer.render(scene, camera);
-    }
-    animateParticles();
-    
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-    
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('.project-card, .terminal, .tech-item, .stat-card').forEach((el) => {
-        gsap.from(el, {
-            scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none reverse' },
-            opacity: 0, y: 40, duration: 0.7, ease: 'power2.out'
-        });
-    });
-    
-    document.querySelectorAll('.tech-item').forEach(item => {
-        item.addEventListener('mouseenter', () => gsap.to(item, { scale: 1.07, borderColor: '#38bdf8', duration: 0.2, boxShadow: '0 0 12px #38bdf8' }));
-        item.addEventListener('mouseleave', () => gsap.to(item, { scale: 1, borderColor: '#1e2a3e', duration: 0.2, boxShadow: 'none' }));
-    });
-    
-    new Typed('#typed-output', {
-        stringsElement: '#typed-strings',
-        typeSpeed: 60, backSpeed: 30, backDelay: 2000, startDelay: 500, loop: true, showCursor: true, cursorChar: '▊'
-    });
-    
-    document.addEventListener('mousemove', (e) => {
-        const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-        const mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-        gsap.to(particlesMesh.rotation, { y: mouseX * 0.1, x: mouseY * 0.05, duration: 1.2, ease: 'power2.out' });
-        gsap.to(purplePoints.rotation, { y: -mouseX * 0.08, x: mouseY * 0.04, duration: 1.2 });
-    });
+    </section>
 
-    /* --- الخارق المطور: 3D Card Tilt Tracking Logic Engine --- */
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left; 
-            const y = e.clientY - rect.top; 
-            
-            const xc = rect.width / 2;
-            const yc = rect.height / 2;
-            
-            // حساب زوايا الـ 3D Rotate بناءً على تموضع الماوس
-            const angleX = (yc - y) / 15; 
-            const angleY = (x - xc) / 15;
-            
-            gsap.to(card, {
-                rotateX: angleX,
-                rotateY: angleY,
-                duration: 0.3,
-                ease: 'power1.out',
-                overwrite: 'auto'
-            });
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            // إعادة البطاقة لنقطة الصفر عند خروج الماوس
-            gsap.to(card, {
-                rotateX: 0,
-                rotateY: 0,
-                duration: 0.5,
-                ease: 'power2.out',
-                overwrite: 'auto'
-            });
-        });
+    <!-- ===== ABOUT ===== -->
+    <section id="about">
+        <div class="section-label">About</div>
+        <h2 class="section-title">System <span class="glow-text">Architecture</span> Philosophy</h2>
+        <div class="about-grid">
+            <div class="about-block">
+                <div class="about-block-header">
+                    <span class="arrow">❯</span> cat whoami.txt
+                </div>
+                <p>
+                    With <strong>2+ years</strong> of production experience, I transform complex requirements into
+                    clean, scalable system architectures. I specialise in <strong>Django backends</strong> that handle
+                    <strong>10k+ concurrent requests</strong> and frontends that don't get in the way.
+                </p>
+            </div>
+            <div class="about-block">
+                <div class="about-block-header">
+                    <span class="arrow">❯</span> cat approach.txt
+                </div>
+                <p>
+                    Every project starts with the data model. I believe <strong>schema design</strong> is the foundation
+                    of performance — the rest is just plumbing. I optimise for <strong>readability, maintainability,
+                    and query efficiency</strong> before anything else.
+                </p>
+            </div>
+            <div class="quote-block">
+                <blockquote>"Keep it simple, but not simpler."</blockquote>
+                <cite>— zaid@arch:~/portfolio $</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CORE STACK ===== -->
+    <section id="stack">
+        <div class="section-label">Core Stack</div>
+        <h2 class="section-title">$ <span class="glow-text">ls</span> -la /skills/</h2>
+        <div class="stack-grid">
+            <div class="stack-category">
+                <div class="stack-category-header">
+                    <span class="dollar">$</span> backend + ai
+                </div>
+                <div class="stack-items">
+                    <div class="stack-item"><i class="fa-brands fa-python"></i> Python <span class="sub">(Django / DRF / Ninja)</span></div>
+                    <div class="stack-item"><i class="fa-solid fa-bolt"></i> Async Processing <span class="sub">(Celery / Redis)</span></div>
+                    <div class="stack-item"><i class="fa-solid fa-brain"></i> AI Agents <span class="sub">(LangChain / OpenAI)</span></div>
+                    <div class="stack-item"><i class="fa-solid fa-flask"></i> FastAPI <span class="sub">(Async APIs)</span></div>
+                </div>
+            </div>
+            <div class="stack-category">
+                <div class="stack-category-header">
+                    <span class="dollar">$</span> frontend + mobile
+                </div>
+                <div class="stack-items">
+                    <div class="stack-item"><i class="fa-brands fa-react"></i> React.js <span class="sub">(Hooks / Zustand)</span></div>
+                    <div class="stack-item"><i class="fa-brands fa-react"></i> React Native <span class="sub">(Expo)</span></div>
+                    <div class="stack-item"><i class="fa-brands fa-js"></i> JavaScript / TypeScript</div>
+                    <div class="stack-item"><i class="fa-brands fa-vuejs"></i> Vue.js <span class="sub">(Composition API)</span></div>
+                </div>
+            </div>
+            <div class="stack-category">
+                <div class="stack-category-header">
+                    <span class="dollar">$</span> databases
+                </div>
+                <div class="stack-items">
+                    <div class="stack-item"><i class="fa-solid fa-database"></i> PostgreSQL <span class="sub">(Expert: Optimisation / Indexing)</span></div>
+                    <div class="stack-item"><i class="fa-solid fa-database"></i> Redis <span class="sub">(Caching / Queues / Sessions)</span></div>
+                    <div class="stack-item"><i class="fa-solid fa-database"></i> MySQL <span class="sub">(Legacy migrations)</span></div>
+                </div>
+            </div>
+            <div class="stack-category">
+                <div class="stack-category-header">
+                    <span class="dollar">$</span> infra + os
+                </div>
+                <div class="stack-items">
+                    <div class="stack-item"><i class="fa-brands fa-linux"></i> Arch Linux <span class="sub">(Daily driver since 2016)</span></div>
+                    <div class="stack-item"><i class="fa-brands fa-docker"></i> Docker &amp; Compose <span class="sub">(Swarm)</span></div>
+                    <div class="stack-item"><i class="fa-solid fa-cloud"></i> AWS <span class="sub">(EC2 / RDS / S3)</span></div>
+                    <div class="stack-item"><i class="fa-solid fa-cloud"></i> Oracle Cloud <span class="sub">(Always Free Tier)</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURED PROJECT ===== -->
+    <section id="projects">
+        <div class="section-label">Featured</div>
+        <h2 class="section-title">./<span class="glow-text">production</span> --showcase</h2>
+        <div class="project-card" data-tilt>
+            <div class="project-visual">
+                <img src="madarcore.png" alt="Madar Core Dashboard" onerror="this.style.display='none'">
+                <div class="project-badge"><i class="fa-solid fa-circle"></i> LIVE PRODUCTION</div>
+            </div>
+            <div class="project-info">
+                <h3 class="project-name">Madar Core <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 400;">MC</span></h3>
+                <p class="project-sub">Enterprise School ERP — Next-Gen B2B Educational Ecosystem</p>
+                <div class="project-tags">
+                    <span class="project-tag">Django</span>
+                    <span class="project-tag">DRF</span>
+                    <span class="project-tag">React</span>
+                    <span class="project-tag">PostgreSQL</span>
+                    <span class="project-tag">Docker Swarm</span>
+                    <span class="project-tag">Redis</span>
+                </div>
+                <div class="project-metrics">
+                    <div class="metric">
+                        <span class="metric-value">115K+</span>
+                        <span class="metric-label">Lines of Code</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">5M+</span>
+                        <span class="metric-label">Requests / Month</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-value">200+</span>
+                        <span class="metric-label">RPS Sustained</span>
+                    </div>
+                </div>
+                <p class="project-desc">
+                    Decoupled infrastructure serving <strong style="color: var(--text-primary);">15k+ daily users</strong>.
+                    Load-tested with Locust to sustain 200+ RPS. AI-powered diagnostics, automated curriculum generation,
+                    and real-time analytics — all behind a clean, RESTful API layer.
+                </p>
+                <div class="project-actions">
+                    <a href="https://madarcore.onrender.com" target="_blank" class="btn btn-primary">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
+                    </a>
+                    <a href="mailto:zaidejjodev@gmail.com" class="btn btn-outline">
+                        <i class="fa-regular fa-envelope"></i> Ask for Source
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FREELANCE METRICS ===== -->
+    <section id="metrics">
+        <div class="section-label">Impact</div>
+        <h2 class="section-title">./<span class="glow-text">metrics</span> --freelance</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-card-icon"><i class="fa-solid fa-tachometer-alt"></i></div>
+                <div class="metric-card-value">10k+</div>
+                <div class="metric-card-label">Concurrent Users</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-card-icon"><i class="fa-solid fa-check-circle"></i></div>
+                <div class="metric-card-value">99.98%</div>
+                <div class="metric-card-label">API Uptime</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-card-icon"><i class="fa-solid fa-gauge-high"></i></div>
+                <div class="metric-card-value">&lt;45ms</div>
+                <div class="metric-card-label">p99 Latency</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-card-icon"><i class="fa-brands fa-linux"></i></div>
+                <div class="metric-card-value">Arch BTW</div>
+                <div class="metric-card-label">Since 2016</div>
+            </div>
+            <div class="metric-card highlight">
+                <div class="metric-card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="metric-card-content">
+                    <div class="metric-card-value">30% to 50% latency reduction achieved for local clients through targeted database query optimisation.</div>
+                    <div class="metric-card-label">— Freelance Performance Engineering —</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONNECT / FOOTER ===== -->
+    <footer id="connect">
+        <div class="footer-prompt">
+            <span class="green">zaid@arch</span><span style="color:var(--text-muted);">:</span><span class="cyan">~/portfolio</span><span style="color:var(--text-muted);">$ </span>
+            <span style="color:var(--text-primary);">./connect.sh</span>
+            <span class="blink">▊</span>
+        </div>
+        <div class="footer-links">
+            <a href="mailto:zaidejjodev@gmail.com" target="_blank" class="footer-link">
+                <i class="fa-regular fa-envelope"></i> zaidejjodev@gmail.com
+            </a>
+            <a href="https://github.com/zaidejjo" target="_blank" class="footer-link">
+                <i class="fa-brands fa-github"></i> github.com/zaidejjo
+            </a>
+            <a href="https://linkedin.com/in/zaidejjo" target="_blank" class="footer-link">
+                <i class="fa-brands fa-linkedin-in"></i> linkedin.com/in/zaidejjo
+            </a>
+            <a href="https://x.com/zaid_ejjo" target="_blank" class="footer-link">
+                <i class="fa-brands fa-x-twitter"></i> @zaid_ejjo
+            </a>
+        </div>
+        <div class="footer-bottom">
+            <p>
+                <span class="heart">✦</span> Available for <strong>Full-Time Remote</strong> ·
+                <strong>Consulting</strong> · <strong>Open-Source</strong> <span class="heart">✦</span>
+            </p>
+            <p style="margin-top: 8px;">
+                &copy; 2026 Zaid Ajo — Built with <span class="heart">♥</span> on <span class="arch">Arch Linux</span>
+            </p>
+        </div>
+    </footer>
+</main>
+
+<script>
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg-canvas'), alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+// Grid
+const gridSize = 40;
+const gridDivisions = 40;
+const gridHelper = new THREE.GridHelper(gridSize, gridDivisions, 0x06b6d4, 0x06b6d4);
+gridHelper.position.y = -15;
+gridHelper.material.transparent = true;
+gridHelper.material.opacity = 0.15;
+scene.add(gridHelper);
+
+// Particles
+const particleCount = 600;
+const geometry = new THREE.BufferGeometry();
+const positions = new Float32Array(particleCount * 3);
+for (let i = 0; i < particleCount * 3; i += 3) {
+    positions[i] = (Math.random() - 0.5) * 120;
+    positions[i + 1] = (Math.random() - 0.5) * 80;
+    positions[i + 2] = (Math.random() - 0.5) * 80 - 20;
+}
+geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const material = new THREE.PointsMaterial({
+    color: 0x22c55e,
+    size: 0.1,
+    transparent: true,
+    opacity: 0.5,
+    blending: THREE.AdditiveBlending,
+});
+const particles = new THREE.Points(geometry, material);
+scene.add(particles);
+
+// Second particle field (cyan)
+const geo2 = new THREE.BufferGeometry();
+const pos2 = new Float32Array(400 * 3);
+for (let i = 0; i < 400 * 3; i += 3) {
+    pos2[i] = (Math.random() - 0.5) * 100;
+    pos2[i + 1] = (Math.random() - 0.5) * 60;
+    pos2[i + 2] = (Math.random() - 0.5) * 60 - 10;
+}
+geo2.setAttribute('position', new THREE.BufferAttribute(pos2, 3));
+const mat2 = new THREE.PointsMaterial({
+    color: 0x06b6d4,
+    size: 0.08,
+    transparent: true,
+    opacity: 0.4,
+    blending: THREE.AdditiveBlending,
+});
+const particles2 = new THREE.Points(geo2, mat2);
+scene.add(particles2);
+
+camera.position.set(0, 5, 45);
+camera.lookAt(0, -5, 0);
+
+function animate() {
+    requestAnimationFrame(animate);
+    const t = Date.now() * 0.0001;
+    gridHelper.position.y = -15 + Math.sin(t * 0.5) * 1.5;
+    particles.rotation.y += 0.0003;
+    particles.rotation.x += 0.0001;
+    particles2.rotation.y -= 0.0004;
+    renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth) * 2 - 1;
+    const y = (e.clientY / window.innerHeight) * 2 - 1;
+    particles.rotation.y = x * 0.08;
+    particles.rotation.x = y * 0.04;
+    particles2.rotation.y = -x * 0.06;
+    camera.position.x = x * 2;
+    camera.position.y = 5 + y * 1.5;
+    camera.lookAt(0, -5, 0);
+});
+
+gsap.registerPlugin(ScrollTrigger);
+
+const fadeElements = document.querySelectorAll(
+    '.terminal-window, .about-block, .quote-block, .stack-category, .project-card, .metric-card, .footer-links'
+);
+fadeElements.forEach((el) => {
+    gsap.from(el, {
+        scrollTrigger: {
+            trigger: el,
+            start: 'top 92%',
+            toggleActions: 'play none none reverse',
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        ease: 'power2.out',
     });
-        </script>
-    </body>
+});
+
+gsap.from('.status-bar', {
+    y: -36,
+    opacity: 0,
+    duration: 0.5,
+    ease: 'power2.out',
+    delay: 0.2,
+});
+
+gsap.from('.hero-name', { opacity: 0, x: -20, duration: 0.6, delay: 0.4, ease: 'power2.out' });
+gsap.from('.hero-title', { opacity: 0, x: -20, duration: 0.6, delay: 0.5, ease: 'power2.out' });
+gsap.from('.typed-container', { opacity: 0, duration: 0.5, delay: 0.7 });
+gsap.from('.hero-actions', { opacity: 0, y: 15, duration: 0.5, delay: 0.9, ease: 'power2.out' });
+gsap.from('.profile-ring', { opacity: 0, scale: 0.8, duration: 0.8, delay: 0.6, ease: 'back.out(1.7)' });
+
+new Typed('#typed-output', {
+    stringsElement: '#typed-strings',
+    typeSpeed: 40,
+    backSpeed: 20,
+    backDelay: 3000,
+    startDelay: 1200,
+    loop: true,
+    showCursor: true,
+    cursorChar: '▊',
+});
+
+const statusEl = document.getElementById('status-msg');
+const statusMessages = ['init portfolio 🚀', 'tail -f /var/log/success', 'systemctl --user start focus', 'ping google.com -c 3'];
+let idx = 0;
+setInterval(() => {
+    idx = (idx + 1) % statusMessages.length;
+    statusEl.textContent = statusMessages[idx];
+}, 4000);
+statusEl.textContent = statusMessages[0];
+</script>
+</body>
 </html>
