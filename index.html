@@ -831,7 +831,7 @@ footer {
             <a href="https://github.com/zaidejjo" target="_blank" class="footer-link">
                 <i class="fa-brands fa-github"></i> github.com/zaidejjo
             </a>
-            <a href="https://linkedin.com/in/zaidejjo" target="_blank" class="footer-link">
+            <a href="https://linkedin.com/in/zaidajo" target="_blank" class="footer-link">
                 <i class="fa-brands fa-linkedin-in"></i> linkedin.com/in/zaidajo
             </a>
             <a href="https://x.com/zaid_ejjo" target="_blank" class="footer-link">
@@ -868,7 +868,7 @@ scene.add(gridHelper);
 
 // Particles
 const particleCount = 600;
-const geometry = new THREE.BufferGeometry();
+const geometry = new THREE.BufferGeometry()
 const positions = new Float32Array(particleCount * 3);
 for (let i = 0; i < particleCount * 3; i += 3) {
     positions[i] = (Math.random() - 0.5) * 120;
