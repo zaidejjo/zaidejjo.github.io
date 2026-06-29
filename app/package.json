@@ -1,0 +1,30 @@
+{
+  "name": "app",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "npx serve .output/public",
+    "postinstall": "nuxt prepare",
+    "clean": "rm -rf .nuxt .output dist",
+    "deploy": "nuxt generate && touch .output/public/.nojekyll",
+    "deploy:gh": "nuxt generate && touch .output/public/.nojekyll && echo 'Site built in .output/public/ — copy or symlink to your gh-pages branch root.'"
+  },
+  "dependencies": {
+    "@nuxt/image": "^2.0.0",
+    "@nuxt/ui": "^4.9.0",
+    "gsap": "^3.15.0",
+    "nuxt": "^4.4.8",
+    "tailwindcss": "^4.3.2",
+    "three": "^0.185.0",
+    "typed.js": "^3.0.0",
+    "vue": "^3.5.38",
+    "vue-router": "^5.1.0"
+  },
+  "devDependencies": {
+    "@iconify-json/heroicons": "^1.2.3",
+    "@iconify-json/simple-icons": "^1.2.88"
+  }
+}
