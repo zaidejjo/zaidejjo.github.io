@@ -1,0 +1,22 @@
+Act as an expert Senior Frontend Engineer specialized in Nuxt 4, Vue 3 (Composition API), and Nuxt UI. 
+
+I have uploaded my current personal portfolio source code (index.html). It is currently built using Vanilla HTML, CSS, JavaScript, Tailwind CSS, GSAP, and Typed.js. The design is a highly creative Terminal/CLI and Code-editor hybrid theme with dark/light mode and custom SPA page transitions.
+
+I want to completely rebuild and upgrade this portfolio into a much more powerful, modern, production-ready, and scalable application using:
+- Nuxt 3 (with Static Site Generation - SSG for GitHub Pages)
+- Nuxt UI (For components, icons, and theme consistency)
+- Tailwind CSS (leveraging Nuxt UI configurations)
+- GSAP & Typed.js (integrated cleanly into Vue lifecycle hooks)
+
+CRITICAL INSTRUCTION: DO NOT GENERATE ANY CODE YET. 
+First, I want you to analyze my uploaded `index.html` and provide a comprehensive, detailed blueprint and implementation plan. You must wait for my explicit approval before writing any code.
+
+Your response must include the following details in your plan:
+1. Architecture & Folder Structure: How the project will be structured in Nuxt 3 (layouts, pages, components, composables, public assets, plugins).
+2. Component Breakdown: How you will modularize the current layout (e.g., Command Bar, Status Bar, Sidebar, Terminal Windows, Terminal Content, Project Cards, Competencies grid).
+3. Nuxt UI Integration Strategy: Which Nuxt UI components will replace or enhance the current custom HTML elements (e.g., tooltips, buttons, modals, command palette if applicable, dark/light mode switching using @nuxtjs/color-mode).
+4. Animations & State Management (GSAP / Transitions): How you will handle the current view-switching animations using Nuxt Page Transitions or GSAP inside `onMounted`, ensuring the Terminal/CLI animations remain fluid and bugs-free.
+5. Upgrade Features: Suggest 2-3 advanced features we can add using Nuxt capabilities (e.g., a real Nuxt UI Command Palette `UCommandPalette` acting as a real terminal terminal executor, dynamic content loading via Nuxt Content for projects/blogs if recommended, etc.).
+6. Step-by-Step Migration Roadmap: A phased approach on how we will build it step by step.
+
+Review my code, write the complete blueprint, and end your response by asking for my permission to start phase 1.

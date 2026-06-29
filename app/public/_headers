@@ -1,0 +1,43 @@
+# ─────────────────────────────────────────────────────────
+# GitHub Pages Custom Headers — Static Site Caching
+# ─────────────────────────────────────────────────────────
+
+# Fingerprinted build artifacts — never change between deploys
+/_nuxt/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts — immutable cache
+/_fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+# Image assets — long cache, content-hash in URL if possible
+/*.webp
+  Cache-Control: public, max-age=31536000
+/*.png
+  Cache-Control: public, max-age=31536000
+/*.jpg
+  Cache-Control: public, max-age=31536000
+/*.jpeg
+  Cache-Control: public, max-age=31536000
+/*.svg
+  Cache-Control: public, max-age=31536000
+/*.ico
+  Cache-Control: public, max-age=31536000
+
+# Static documents
+/*.pdf
+  Cache-Control: public, max-age=31536000
+
+# CSV, JSON data files
+/*.json
+  Cache-Control: public, max-age=3600
+/*.csv
+  Cache-Control: public, max-age=3600
+
+# HTML pages — revalidate frequently (content may change)
+/*
+  Cache-Control: public, max-age=0, must-revalidate
